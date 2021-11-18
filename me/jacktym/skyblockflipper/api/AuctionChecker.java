@@ -58,6 +58,9 @@ public class AuctionChecker {
 	}
 
 	public static void main() {
+		if (ConfigHandler.getDeveloperMode() == true) {
+			System.out.println("Main Auction Checker Triggered!");
+		}
 		URL auctionUrl = null;
 		HttpURLConnection connection = null;
 		InputStream response = null;
@@ -164,8 +167,8 @@ public class AuctionChecker {
 
 				if (item_name.contains("enchanted_book") || item_name.contains("enchantedbook")) {
 					String[] book_name1 = jobject.get("item_lore").getAsString().replace(" ", "_").replace(" ", "_").replace("-", "_").split("\\n")[0].split("�");
-					String book_name = book_name1[book_name1.length - 1].toLowerCase().replace("-", "_").substring(1);
-
+					String book_name = book_name1[book_name1.length - 1].toLowerCase().replace("-", "_").substring(1, book_name1[book_name1.length - 1].length());
+					
 					item_name = book_name;
 				}
 
@@ -181,7 +184,7 @@ public class AuctionChecker {
 					LowestBIN.lowestBin.put(item_name, item_price);
 				}
 				
-				if (ConfigHandler.getDeveloperMode()) {
+				if (ConfigHandler.getDeveloperMode() == true) {
 					SBF.chatAlert(item_name, item_price, uuid, item_worth);
 				}
 

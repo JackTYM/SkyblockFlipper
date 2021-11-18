@@ -42,7 +42,7 @@ public class LowestBIN {
 		    	
 		    	if (item_name.contains("enchanted_book")) {
 		    		String[] book_name1 = jobject.get("item_lore").getAsString().replace(" ", "_").replace(" ", "_").replace("-", "_").split("\\n")[0].split("�");
-		    		String book_name = book_name1[book_name1.length - 1].toLowerCase().replace("-", "_").substring(1);
+					String book_name = book_name1[book_name1.length - 1].toLowerCase().replace("-", "_").substring(1, book_name1[book_name1.length - 1].length());
 		    			    		
 		    		item_name = book_name;
 		    	}
