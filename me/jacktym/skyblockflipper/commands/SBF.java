@@ -49,7 +49,6 @@ public class SBF extends CommandBase {
 		 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/pricecalculate {item_name} {item_name}*{amount}"));
 		 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/sbf alerts [add/remove/list/on/off] {item_name}"));
 		 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/sbf lowestprofit {number} - Sets the lowest profit for a flip " + EnumChatFormatting.GRAY + "to be shown"));
-		 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/sbf alerttype [gui/chat] - Sets the place flip alerts will be " + EnumChatFormatting.GRAY + "shown"));
 
 		} else {
 			if (args[0].contains("help")) {
@@ -57,6 +56,7 @@ public class SBF extends CommandBase {
 			 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/sbf apikey {key} - Saves New Hypixel API Key to Config"));
 			 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/pricecalculate {item_name} {item_name}*{amount}"));
 			 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/sbf alerts [add/remove/list/on/off] {item_name}"));
+			 	(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/sbf lowestprofit {number} - Sets the lowest profit for a flip " + EnumChatFormatting.GRAY + "to be shown"));
 			}
 			
 			if (args[0].contains("apikey")) {
@@ -164,6 +164,9 @@ public class SBF extends CommandBase {
 						(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.GRAY + "/sbf alerts [add/remove/list/on/off] {item_name} {max_price)"));
 					}
 				}
+			}
+			if (args[0].contains("lowestprofit")) {
+				ConfigHandler.setLowestProfit(Integer.valueOf(args[1]));
 			}
 		}
 	}

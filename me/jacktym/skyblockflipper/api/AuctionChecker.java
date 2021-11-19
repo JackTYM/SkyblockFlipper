@@ -184,18 +184,18 @@ public class AuctionChecker {
 					LowestBIN.lowestBin.put(item_name, item_price);
 				}
 				
-				if (ConfigHandler.getDeveloperMode() == true) {
+				if (ConfigHandler.getDeveloperMode() == true && ConfigHandler.getAlertOn() == true) {
 					SBF.chatAlert(item_name, item_price, uuid, item_worth);
 				}
 
 				if (! uuids.contains(uuid)) {
 					uuids.add(uuid);
-					if (notificationItems.keySet().contains(item_name)) {
+					if (notificationItems.keySet().contains(item_name) && ConfigHandler.getAlertOn() == true) {
 						if (Integer.parseInt(notificationItems.get(item_name)) <= item_price || Integer.parseInt(notificationItems.get(item_name)) == 0) {
 							SBF.chatAlert(item_name, item_price, uuid, item_worth);
 						}
 					}
-					if (LowestBIN.getPriceInt(item_name) > item_price && ConfigHandler.getLowestProfits() <= (item_price - LowestBIN.getPriceInt(item_name))) {
+					if (LowestBIN.getPriceInt(item_name) > item_price && ConfigHandler.getLowestProfits() <= (LowestBIN.getPriceInt(item_name) - item_price)) {
 						SBF.chatAlert(item_name, item_price, uuid, item_worth);
 					}
 				}
