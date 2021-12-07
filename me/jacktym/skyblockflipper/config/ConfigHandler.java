@@ -15,9 +15,15 @@ public class ConfigHandler {
 	
 	private static Property alertOn;
 	
+	private static Property flipAlertOn;
+	
 	private static Property lowestProfit;
 	
 	private static Property developerMode;
+	
+	private static Property percentageMode;
+	
+	private static Property lowestPercentage;
 	
 	public static void init(File file) {
 		config = new Configuration(file);
@@ -30,9 +36,12 @@ public class ConfigHandler {
 		config.addCustomCategoryComment(category, "Chat alerts for specific items under a certain price");
 		alertItems = config.get(category, "alertItems", "[item_name,max_price]");
 		alertOn = config.get(category, "alertBoolean", true);
+		flipAlertOn = config.get(category, "flipAlertBoolean", true);
 		
 		category = "Flipping Settings";
 		lowestProfit = config.get(category, "lowestProfit", 100);
+		percentageMode = config.get(category, "percentageMode", true);
+		lowestPercentage = config.get(category, "lowestPercentage", 1);
 		
 		category = "Developer Settings";
 		developerMode = config.get(category, "developerMode", false);
@@ -69,6 +78,14 @@ public class ConfigHandler {
 		alertOn.set(value);
 	}
 	
+	public static boolean getFlipAlertOn() {
+		return flipAlertOn.getBoolean();
+	}
+	
+	public static void setFlipAlertOn(boolean value) {
+		flipAlertOn.set(value);
+	}
+	
 	public static void saveConfig() {
 	    config.save();
 	  }
@@ -86,5 +103,21 @@ public class ConfigHandler {
 	}
 	public static boolean getDeveloperMode() {
 		return developerMode.getBoolean();
+	}
+	
+	public static void setPercentageMode(boolean value) {
+		percentageMode.set(value);
+	}
+	
+	public static boolean getPercentageMode() {
+		return percentageMode.getBoolean();
+	}
+	
+	public static void setLowestPercentage(int value) {
+		lowestPercentage.set(value);
+	}
+	
+	public static int getLowestPercentage() {
+		return lowestPercentage.getInt();
 	}
 }
