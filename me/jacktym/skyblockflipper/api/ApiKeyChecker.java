@@ -31,7 +31,6 @@ public class ApiKeyChecker {
 		try {
 			keyUrl = new URL("https://api.hypixel.net/key");
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -41,7 +40,6 @@ public class ApiKeyChecker {
 			connection.setRequestProperty("API-Key", apiKey);
 			response = connection.getInputStream();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -54,6 +52,10 @@ public class ApiKeyChecker {
 			
 			if (result == "false") {
 				(Minecraft.func_71410_x()).field_71439_g.func_145747_a((IChatComponent)new ChatComponentText(EnumChatFormatting.RED + "Invalid API Key. Please do /api new or Add one via /sbf apikey {key}"));
+			}
+			
+			if (result == "true") {
+				ConfigHandler.setApiKey(apiKey);
 			}
 		}
 		

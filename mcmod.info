@@ -3,7 +3,7 @@
   "modid": "examplemod",
   "name": "Example Mod",
   "description": "Example placeholder mod.",
-  "version": "v1.1.1-release",
+  "version": "v1.1.2-release",
   "mcversion": "1.8.9",
   "url": "",
   "updateUrl": "",
