@@ -7,11 +7,11 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class OnChatReceive {
 	
+	@SubscribeEvent
 	public void onChatReceive(ClientChatReceivedEvent event) {
 		String unformattedText = event.message.func_150260_c();
 		String formattedText = event.message.func_150260_c();
